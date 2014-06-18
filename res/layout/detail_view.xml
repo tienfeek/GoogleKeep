@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray" >
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="如果替换或者删除一个Fragment然后让用户可以导航到上一个Fragment，你必须在调用commit()方法之前调用addToBackStack()方法添加到回退栈。如果你把这个Fragment添加到了回退栈，在提交之后这个Fragment是会被Stop而不是Destroyed。如果用户导航到这个Fragment，这个Fragment会被Restart而不是重新创建。如果你没有把它添加到回退栈，则在删除或者替换的时候它将被Destroyed。例子：" />
+
+</RelativeLayout>
