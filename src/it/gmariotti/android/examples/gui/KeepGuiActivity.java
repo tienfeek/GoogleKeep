@@ -206,7 +206,7 @@ public class KeepGuiActivity extends Activity implements ActionMode.Callback {
                 
                 @Override
                 public void onClick(View v) {
-                    if(fragment.isAdded() || fragment.isRemoving() || fragment.isVisible()){
+                    if(fragment.isAdded() || fragment.isRemoving() || fragment.isVisible() || fragment.getAnimating()){
                         return;
                     }
                     showDetail(v, note);

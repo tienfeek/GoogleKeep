@@ -5,6 +5,7 @@ package it.gmariotti.android.examples.gui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.app.Fragment;
 import android.graphics.Color;
@@ -27,6 +28,9 @@ public class DetailFragment extends Fragment {
     
     private View originalView;
     private ValueAnimator startScaleAnimator;
+    private  ValueAnimator closeAnimator;
+    
+    private boolean animating = false;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,13 +48,22 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(startScaleAnimator.isRunning()) return;
-                Log.i("wanges", startScaleAnimator.isRunning()+ " rootview onclick");
                 closeSacle();
             }
         });
     }
     
+    
+    public boolean getAnimating(){
+        return animating;
+    }
+    
     public void startScale(View originalView){
+        if(getView()==null) return;
+        
+        if(closeAnimator != null) closeAnimator.cancel();
+        
+        this.animating = true;
         this.originalView = originalView;
         
         final Rect originalLocation = new Rect();
@@ -95,10 +108,19 @@ public class DetailFragment extends Fragment {
                 rootView.requestLayout();
             }
         });
+        startScaleAnimator.addListener(new AnimatorListenerAdapter(){
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                animating = false;
+            }
+        });
+        
     }
     
     
     public void closeSacle(){
+        startScaleAnimator.cancel();
         
         final Rect originalLocation = new Rect();
         final Rect destLocation = new Rect();
@@ -115,11 +137,11 @@ public class DetailFragment extends Fragment {
         
         rootView.requestLayout();
         
-        ValueAnimator animator = ValueAnimator.ofFloat(1,0);
-        animator.setDuration(400);
-        animator.setInterpolator(new AccelerateDecelerateInterpolator());
-        animator.start();
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        ValueAnimator closeAnimator = ValueAnimator.ofFloat(1,0);
+        closeAnimator.setDuration(400);
+        closeAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        closeAnimator.start();
+        closeAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -135,28 +157,20 @@ public class DetailFragment extends Fragment {
             }
         });
         
-        animator.addListener(new AnimatorListener() {
-            
-            @Override
-            public void onAnimationStart(Animator animation) {
-                
-            }
-            
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-                
-            }
+        closeAnimator.addListener(new AnimatorListenerAdapter() {
             
             @Override
             public void onAnimationEnd(Animator animation) {
                 KeepGuiActivity activity = (KeepGuiActivity)getActivity();
                 activity.removeDetail();
+                animating = false;
             }
             
             @Override
             public void onAnimationCancel(Animator animation) {
                 KeepGuiActivity activity = (KeepGuiActivity)getActivity();
                 activity.removeDetail();
+                animating = false;
             }
         });
     }
