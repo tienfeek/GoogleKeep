@@ -6,18 +6,18 @@ For more info about the blog :
 * [GUI like Google Keep] (http://gmariotti.blogspot.com/2013/03/gui-like-google-keep.html)
 * [GUI like Evernote Menu] (http://gmariotti.blogspot.com/2013/03/gui-like-evernote-menu.html)
 
-![ScreenShot](https://github.com/gabrielemariotti/androiddev/raw/master/GuiExample/device1.gif)
-![ScreenShot](https://github.com/gabrielemariotti/androiddev/raw/master/GuiExample/gui1.gif)
+![ScreenShot](https://github.com/tienfeek/GoogleKeep/blob/master/device1.gif)
+![ScreenShot](https://github.com/tienfeek/GoogleKeep/blob/master/gui1.gif)
 
 Credits
 -------
 
-Author: Gabriele Mariotti
+Author: tienfeek
 
 License
 -------
 
-    Copyright 2013 Gabriele Mariotti
+    Copyright 2013 tienfeek
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
