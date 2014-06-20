@@ -40,6 +40,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.gmariotti.android.examples.gui.MainActivity" />
         </activity>
+        
+        <activity
+            android:name="it.gmariotti.android.examples.gui.DemoActivity"
+            android:theme="@style/demoTheme"
+             >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView android:id="@+id/textView" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#cccccc"
+        android:text="上午9时许，习近平来到人民大会堂北大厅，全场响起热烈掌声。习近平同代表们亲切握手并合影留念后，发表了重要讲话。他指出，这次空军党代会总结过去5年工作，部署今后5年任务。我为你们取得的成绩和进步感到高兴，对空军未来发展充满信心。现在，目标已经明确，任务已经部署，关键在于落实。大家要发扬钉钉子精神，乘势而上、真抓实干，努力把战略部署变成现实。"
+        android:textSize="20sp"/>
+	<ImageView android:id="@+id/imageView"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"/>
+</RelativeLayout>
